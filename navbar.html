@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="template.min.css" rel="stylesheet" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/javascript" src="profile.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Userhome.html">BidMobile</a>
+            </div>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="Userhome.html">Home<span class="sr-only"></span></a></li>
+                    <li><a href="table.html">Table</a></li>
+                    <li><a href="Chatroom.html">Chat Room</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                            <img id="dp3" class="avatar img-rounded" height="20" width="30">
+                            <strong><label id="userid2">Nombre</label></strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <img id="dp2" class="avatar img-circle" alt="avatar" height="150" width="100">
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <!--<p class="text-left"><strong>Nombre Apellido</strong></p>-->
+                                            <p class="text-left" id="userid">
+                                                <strong><b>correoElectronico@email.com</b></strong>
+                                                <label id="useridm"></label>
+                                            </p>
+                                            <p class="text-left">
+                                                <a href="UserProfile.html" class="btn btn-primary btn-block btn-sm">Edit Profile</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="navbar-login navbar-login-session">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!--<p class="signin button">-->
+                                            <p class="signin button">
+                                                <input type="submit" id="logout" value="logout" />
+
+
+                                            </p>
+                                            <!--<button type="submit" class="btn btn-danger btn-block" id="logout">
+                                                Logout
+                                                </button>-->
+                                            <!--</p>-->
+                                            <!--<p>
+                                                <input type="submit" class="btn btn-danger btn-block" id="btnlogout" value="Log out" />
+                                            </p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

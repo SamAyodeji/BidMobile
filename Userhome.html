@@ -1,0 +1,994 @@
+﻿<!Doctype html>
+
+
+
+<html>
+<head>
+    <title>Welcome</title>
+    <!--<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>-->
+    
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!--<script src="angular.min.js"></script>-->
+    
+    
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDhWVJoXjsWKgt-S43apfRlfh4bV4OOHSI",
+            authDomain: "bidmobile-5982c.firebaseapp.com",
+            databaseURL: "https://bidmobile-5982c.firebaseio.com",
+            projectId: "bidmobile-5982c",
+            storageBucket: "bidmobile-5982c.appspot.com",
+            messagingSenderId: "1024974385739"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript" src="profile.js"></script>
+    <script src="angularfire.min.js"></script>
+    <!--<script src="bid.js"></script>-->
+    
+    
+    <link href="template.min.css" rel="stylesheet" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+  
+
+    <!--<link href="style/stylelocal.css" rel="stylesheet" />-->
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/javascript" >
+
+        window.onload = function (){
+            //alert((localStorage.getItem('username')));
+           //window.localStorage.getItem('username');
+            $("#userid2").text(window.localStorage.getItem('username'));
+            $("#userid").text(window.localStorage.getItem('username'));
+
+            
+            
+        }
+         // $('#userid2').text(localStorage.getItem('username'));
+        $(document).ready(function () {
+            //alert('442');
+            //alert('12');
+            var storageRef = firebase.storage().ref();
+            
+            var tangRef = storageRef.child(localStorage.getItem('username') + 'profile_pix/dp.jpg');
+            //alert(tangRef);
+            //alert(localStorage.getItem('username') + 'profile_pix/dp.jpg')
+            //alert('12345');
+            tangRef.getDownloadURL().then(function (url) {
+                //alert('12345');
+                //alert(url);
+                //var img = document.getElementById('dp');
+                var pix = document.getElementById('dp2');
+                var pix1 = document.getElementById('dp3');
+                //img.src = url
+                pix.src = url;
+                pix1.src = url;
+            }).catch(function (error) {
+                // If anything goes wrong while getting the download URL, log the error
+                console.error(error);
+            });
+        })
+    </script>
+    
+</head>
+<body ng-app="sampleApp1">
+    
+    
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Userhome.html">BidMobile</a>
+                </div>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="Userhome.html">Home<span class="sr-only"></span></a></li>
+                        <li><a href="table.html">Table</a></li>
+                        <li><a href="Chatroom.html">Chat Room</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                
+                                <img id="dp3" class="avatar img-rounded" height="20" width="30">
+                                <strong><label id="userid2">Nombre</label></strong>
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="navbar-login">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <p class="text-center">
+                                                    <img id="dp2" class="avatar img-circle" alt="avatar" height="150" width="100">
+                                                </p>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                
+                                                <p class="text-left" id="userid"><strong><b>correoElectronico@email.com</b></strong>
+                                                    
+                                                </p>
+                                                <p class="text-left">
+                                                    <a href="UserProfile.html" class="btn btn-primary btn-block btn-sm">Edit Profile</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="navbar-login navbar-login-session">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                               
+                                                <p class="signin button">
+                                                    <button id="logout">logout</button>
+
+
+                                                </p>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!--indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <li data-target="#myCarousel" data-slide-to="6"></li>
+            </ol>
+            <!--wrapper for the slides-->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <!--<img src="images/112_0710_01z_honda_accord_toyota_camry+front_view.jpg" />-->
+
+                    <img src="images/deposit.jpg" style="width:100%; height:450px;" />
+                </div>
+
+                <div class="item">
+                    <img src="images/mobile-61jpg.jpg" style="width:100%; height:450px;" />
+                </div>
+
+                <div class="item">
+
+                    <img src="images/Original-.jpg" style="width:100%; height:450px;" />
+                </div>
+
+                <div class="item">
+
+                    <img src="images/samsung-.jpg" style="width:100%; height:450px;" />
+                </div>
+                <div class="item">
+
+
+                    <img src="images/nokia8-9-e1492610664860.jpeg" style="width:100%; height:450px;" />
+                </div>
+                <div class="item">
+
+
+                    <img src="images/maxresdefault (1).jpg" style="width:100%; height:450px;" />
+                </div>
+                <div class="item">
+
+
+                    <img src="images/Mobile-phone-apps.jpg" style="width:100%; height:450px;" />
+                </div>
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="container">
+            <h1>BidMobile is the top mobile bidding site.</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                        <p> We present to you the latest mobile phones available,and you have the option to bid for any mobile of your choice. </p>
+                        <p>you can always check the table page to see the top bidder with the highest amount Amount.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <p>If you are the winner of the product you bid for. </p>
+                            <p>you would get a call from us and so also a mail in which you would respond to with in 48 hours for further important information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--This is samsung section-->
+        <div ng-controller="ChatCtrl2">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/$_86.JPG">
+
+                            <img src="images/$_86.JPG" style="width:100%" />
+                            <div class="caption">
+                                <p>Samsung Galaxy A9</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 1
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$70,00</span>
+                                </div>
+                                <p class="ends">
+                                    1 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/s8-plus-box.jpg">
+
+                            <img src="images/s8-plus-box.jpg" style="width:100%" />
+                            <div class="caption">
+                                <p>Samsung Galaxy S8+</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 2
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$115,00</span>
+                                </div>
+                                <p class="ends">
+                                    6 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/samsung-galaxy-note7-b3.jpg">
+
+                            <img src="images/samsung-galaxy-note7-b3.jpg" style="width:100%" />
+                            <div class="caption">
+                                <p>Samsng Galaxy Note7</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 3
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$95,00</span>
+                                </div>
+                                <p class="ends">
+                                    3 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--THis is Iphone section-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/s-l1600.jpg">
+
+                            <img src="images/s-l1600.jpg" style="width:100%" />
+                            <div class="caption">
+                                <p>Iphone 6s plus</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 4
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$100,00</span>
+                                </div>
+                                <p class="ends">
+                                    8 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/maxresdefault (2).jpg">
+
+                            <img src="images/maxresdefault (2).jpg" style="width:100%" />
+                            <div class="caption">
+                                <p>Iphone 7</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 5
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$120,00</span>
+                                </div>
+                                <p class="ends">
+                                    8 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="images/maxresdefault (3).jpg">
+
+                            <img src="images/maxresdefault (3).jpg" style="width:100%" />
+                            <div class="caption">
+                                <p>Iphone 7 plus</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 6
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$110,00</span>
+                                </div>
+                                <p class="ends">
+                                    4 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--This is Nokia section-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="/images/hd-nokia-6-.jpg">
+                            <img src="/images/hd-nokia-6-.jpg" alt="Lights" style="width:100%">
+                            <div class="caption">
+                                <p>Nokia 6</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 7
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$90,00</span>
+                                </div>
+                                <p class="ends">
+                                    4 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="/images/maxresdefault (4).jpg">
+                            <img src="/images/maxresdefault (4).jpg" alt="Nature" style="width:100%">
+                            <div class="caption">
+                                <p>Nokia Edge</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 8
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$130,00</span>
+                                </div>
+                                <p class="ends">
+                                    8 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form role="form" ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="/images/mqdefault.jpg">
+                            <img src="/images/mqdefault.jpg" alt="Fjords" style="width:100%">
+                            <div class="caption">
+                                <p>Nokia C9</p>
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button" data-toggle="modal" data-target="#myModalNorm">
+                                        Bid 9
+                                    </a>
+                                </p>
+                                <div class="price">
+                                    <span class="buyout-amount">$310,00</span>
+                                </div>
+                                <p class="ends">
+                                    2 days,  9h 47m
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    Your Details
+                                                </h4>
+                                            </div>
+
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+
+                                                <form ng-submit="add()">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" required ng-model="FullName" class="form-control"
+                                                               id="name" placeholder="Enter Full Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" class="form-control" ng-model="Email"
+                                                               id="email" placeholder="Enter Email" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="number">Phone Number</label>
+                                                        <input type="text" class="form-control" ng-model="Number"
+                                                               id="email" placeholder="Enter Phone Number" required />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Price">Price</label>
+                                                        <input type="text" class="form-control" ng-model="Amount"
+                                                               id="Price" placeholder="Enter Amount" required />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Bid">Bid Number</label>
+                                                        <input type="text" class="form-control" ng-model="BidNumber"
+                                                               id="Bidnumber" placeholder="Provide Bid Number(eg: Bid 1)" required />
+                                                    </div>
+                                                    <input type="submit" class="btn btn-primary" value="Confirm">
+                                                </form>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        var app = angular.module("sampleApp1", ["firebase"]);
+
+        app.controller("ChatCtrl2", function ($scope, $firebaseArray) {
+
+            var ref = firebase.database().ref();
+
+            $scope.name = $firebaseArray(ref);
+
+            $scope.add = function () {
+
+                $scope.name.$add({
+                    FullName: $scope.FullName,
+                    Email: $scope.Email,
+                    Number: $scope.Number,
+                    Amount: $scope.Amount,
+                    Bidnumber: $scope.BidNumber
+                });
+
+                $scope.FullName = "";
+                $scope.Email = "";
+                $scope.Number = "";
+                $scope.Amount = "";
+                $scope.BidNumber = "";
+
+                window.alert("Thank You, Your Bid as bin placed");
+
+            };
+
+
+        });
+    </script>
+    
+    <script>
+        var logout = document.getElementById('logout');
+        logout.addEventListener('click', e => {
+            //alert('help me');
+            firebase.auth().signOut();
+            return window.location = 'index.html';
+            //alert('you are out');
+        });
+    </script>
+</body>
+</html>
+
+
